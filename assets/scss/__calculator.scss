@@ -1,0 +1,199 @@
+.feeding-calculator-wrapper {
+    width: 95%;
+    padding: 15px;
+    background-color: $primary_gray;
+    outline: 3px solid $accent_color;
+    margin: auto;
+
+    form {
+        width: auto;
+        height: auto;
+        background-color: $light_gray;
+        margin: auto;
+        padding-bottom: 15px;
+
+        input[type=submit] {
+            margin: 1rem auto 0;
+            padding: 15px 10px;
+            background-color: $accent_color;
+            font-family: $font;
+            font-size: 1rem;
+            border: none;
+            border-radius: 15px;
+            box-shadow: 2px 2px 5px black;
+
+            &:hover {
+                background-color: lighten($accent_color, 2%);
+                cursor: pointer;
+            }
+        }
+        
+        .feeding-calculator-flex-wrap {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .form-feed {
+            width: 100vw;
+            padding: 10px 30px;
+            box-sizing: border-box;
+        }
+        
+        .form-feed-input {
+            display: flex;;
+            padding: 10px;
+            margin: 0;
+            max-width: 120px;
+            width: 12%;
+            box-sizing: border-box
+        }
+        div:not(.add-row) {
+            display: flex;
+            flex-basis: 100%;
+            width: 100%;
+            justify-content: center;
+
+            label {
+                display: block;
+                max-width: 120px;
+                width: 12%;
+            }
+        }
+
+        .form-feed-submit {
+            display: block;
+        }
+
+        .add-row {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            margin: 25px 0 0 23px;
+            color: $black;
+            background-color: $accent_color;
+            font-size: 1.5rem;
+            text-align: center;
+            position: relative;
+
+            span {
+                position: absolute;
+                top: -20px;
+                font-size: 0.8rem;
+                white-space: nowrap;
+            }
+
+            &:hover {
+                cursor: pointer;
+                background-color: lighten($accent_color, 5%);
+            }
+        }
+    }
+}
+
+.result-wrapper {
+    display: flex;
+    width: 90%;
+    margin: auto;
+    flex-wrap: nowrap;
+    section {
+        width: 100%;
+        min-height: 250px;
+        font-family: $font;
+        flex-basis: 16.6%;
+
+        h2 {
+            text-align: center;
+            text-transform: capitalize;
+            font-size: 1.5rem;
+            margin: 20px 0;
+            font-weight: unset;
+
+            @media screen and (max-width: 768px) {
+                text-align: left;
+                margin-left: calc(25% + 20px);
+            }
+        }
+        ul {
+            display: block;
+            padding: 0;
+
+            li {
+                list-style-type: none;
+                display: block;
+                min-height: 25px;
+                text-align: center;
+                justify-content: center;
+                align-content: center;
+                box-sizing: border-box;
+                line-height: 25px;
+
+                @media screen and (max-width: 768px) {
+                    text-align: left;
+                    padding-left: 10px;
+                    display: block;
+                    flex-basis: 60%;
+                }
+            }
+
+            label {
+                display: none;
+                hyphens: auto;
+                margin-right: 15px;
+
+                @media screen and (max-width: 768px) {
+                    display: block;
+                    flex-basis: 25%;
+                }
+            }
+            
+            li:nth-of-type(odd) {
+                background-color: $light_gray;
+            }
+            li:nth-of-type(even) {
+                background-color: lighten($light_gray, 5%);
+            }
+
+            @media screen and (max-width: 768px) {
+                display: flex;
+                flex-wrap: wrap;
+            }
+        }
+
+        &.result-labels {
+            margin-top: calc(1.5rem + 43px);
+            width: 50%;
+            flex-basis: 16.6%;
+
+            ul {
+                margin: 0;
+                li {
+                    text-align: right;
+                    background: transparent;
+                    padding-right: 10px;
+                    white-space: nowrap;
+                }
+            }
+        }
+        @media screen and (max-width: 768px) {
+            flex-basis: unset;
+        }
+    }
+
+    .high-value, .low-value {
+        color: darkred;
+    }
+
+    .good-value {
+        color: green;
+    }
+
+    @media screen and (max-width: 768px) {
+        flex-wrap: wrap;
+
+        .result-labels {
+            display: none;
+        }
+    }
+}

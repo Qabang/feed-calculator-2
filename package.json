@@ -1,0 +1,9 @@
+{
+  "name": "foderstatsberäknaren",
+  "version": "1.0",
+  "description": "- Created 2020-02-28",
+  "devDependencies": {
+    "gulp-autoprefixer": "^7.0.1",
+    "sassdoc": "^2.7.1"
+  }
+}

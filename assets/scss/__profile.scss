@@ -1,0 +1,45 @@
+.profile {
+    outline: 3px solid $accent_color;
+    background-color: $primary_gray;
+    padding: 15px;
+    margin: 15px auto;
+    width: 90%;
+
+    form {
+        background-color: $light_gray;
+        width: auto;
+        padding: 15px;
+        margin-bottom: 0;
+        display: flex;
+        flex-wrap: wrap;
+
+        input, select {
+            margin: 5px 0;
+            width: 100%
+        }
+
+        select {
+            outline: 0;
+            margin: 7px 0;
+        }
+
+        .profile-basics {
+            display: flex;
+            flex-basis: 67%;
+
+            .profile-section {
+                flex-basis: 50%;
+                padding: 15px;
+            }
+        }
+        .profile-section {
+            display: block;
+            padding: 15px;
+        }
+        input[type=submit] {
+            flex-basis: 100%;
+            width: 100px;
+            outline: 0;
+        }
+    }
+}

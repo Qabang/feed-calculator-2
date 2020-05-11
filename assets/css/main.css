@@ -1,0 +1,17 @@
+div {
+    display: block;
+    /* margin-right: 100px; */
+}
+
+form:not(.form-feed) {
+    /* float: left; */
+    padding: 30px
+}
+
+section {
+    /* display: none; */
+}
+
+nav {
+    /* display: none; */
+}

@@ -1,0 +1,42 @@
+header {
+    max-height: 30vh;
+    overflow: hidden;
+    padding-bottom: 0;
+    font-family: $font;
+    text-transform: capitalize;
+    font-variant: small-caps;
+    letter-spacing: 2;
+
+    h1 {
+        display: flex;
+        flex-direction: column;
+        font-size: 4rem;
+        color: $accent_color;
+        margin: 0;
+
+        span {
+            font-size: 2rem;
+        }
+    }
+
+    nav {
+        margin-top: 15px;
+
+        ul {    
+            display: flex;
+            list-style: none;
+            padding: 0;
+            color: $white;
+
+            li {
+                padding: 15px;
+                padding-bottom: 5px;
+                font-size: 2rem;
+            }
+
+        }
+        li:first-child {
+            padding-left: 0;
+        }
+    }
+}
