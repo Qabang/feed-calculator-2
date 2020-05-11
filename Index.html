@@ -2,24 +2,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    
     <link rel="stylesheet" type="text/css" href="assets/build/css/main.css"/>
     <title>Foderstatsberäknaren</title>
   </head>
   <header>
-    <h1>Equine <span>Feed Estimator</span></h1>
-    <nav>
-      <ul>
-        <li>Start</li>
-        <li>Profiler</li>
-        <li>Sparade beräkningar</li>
-      </ul>
-    </nav>
+    <div class="header-wrapper">
+      <h1>Equine <span>Feed Estimator</span></h1>
+      <nav>
+        <!--TODO-->
+        <ul>
+          <li>Start</li>
+          <li>Profiler</li>
+          <li>Sparade beräkningar</li>
+        </ul>
+      </nav>
+    </div>
   </header>
   <body>
-
     <main>
-      
       <div class="profile">
         <form onsubmit="event.preventDefault(); profile_submit();">
           <div class="profile-basics">
@@ -30,11 +30,10 @@
               <input class="born" type="number" placeholder="YYYY" value="2005"><br>
               <label>Kön</label>
               <select id="sex" class="sex" name="kön">
-                  <option value="stallion">Hingst</option>
-                  <option value="gelding/mare">Valack/Sto</option>
-                </select><br>
+                <option value="stallion">Hingst</option>
+                <option value="gelding/mare">Valack/Sto</option>
+              </select>
             </div>
-
             <div class="profile-section">
               <label>Vikt</label>
               <select id="weight" class="weight" name="vikt">
@@ -45,8 +44,7 @@
                 <option value="type-easy">Lättfödd</option>
                 <option value="type-normal">Normalfödd</option>
                 <option value="type-hard">Svårfödd</option>
-              </select><br>
-              
+              </select>
               <label>Hull</label>
               <select class="hull" name="hull">
                 <option value="thin">Tunn</option>
@@ -55,13 +53,10 @@
               </select>
             </div>
           </div>
-          <br/>
           <div class="profile-section">
-
             <label>Arbete i minuter per dag</label>
             <div clas="profile-work">
               <input class="walk" type="" placeholder="Skritt" value="30"> min 
-              <br>
               <input class="trot" type="" placeholder="Trav / Galopp" value="30"> min
             </div>
           </div>
@@ -140,97 +135,15 @@
               <label>selen (mg)</label>
             </div>
             <div class="feed-row feed-row-1">
-              <input class="form-feed-input input-amount" type="number" placeholder="" value="10">
-              <input class="form-feed-input input-solids" type="number" placeholder="" value="89">
-              <input class="form-feed-input input-mj" type="number" placeholder="" value="9">
-              <input class="form-feed-input input-smrp" type="number" placeholder="" value="39">
-              <input class="form-feed-input input-ca" type="number" placeholder="">
-              <input class="form-feed-input input-p" type="number" placeholder="">
-              <input class="form-feed-input input-mg" type="number" placeholder="">
-              <input class="form-feed-input input-selen" type="number" placeholder="">
+              <input step="0.01" class="form-feed-input input-amount" type="number" placeholder="">
+              <input step="0.01" class="form-feed-input input-solids" type="number" placeholder="">
+              <input step="0.01" class="form-feed-input input-mj" type="number" placeholder="" value="9">
+              <input step="0.01" class="form-feed-input input-smrp" type="number" placeholder="" value="39">
+              <input step="0.01" class="form-feed-input input-ca" type="number" placeholder="">
+              <input step="0.01" class="form-feed-input input-p" type="number" placeholder="">
+              <input step="0.01" class="form-feed-input input-mg" type="number" placeholder="">
+              <input step="0.01" class="form-feed-input input-selen" type="number" placeholder="">
             </div>
-            <!--{# <div>
-              <label>TS %</label>
-              <input class="form-feed-input hay-solids" type="number" placeholder="">
-              <input class="form-feed-input hay solids" type="number" placeholder="">
-              <input class="form-feed-input hay solids" type="number" placeholder="">
-              <input class="form-feed-input hay solids" type="number" placeholder="">
-              <input class="form-feed-input hay solids" type="number" placeholder="">
-              <input class="form-feed-input hay solids" type="number" placeholder="">
-              <input class="form-feed-input hay solids" type="number" placeholder="">
-              <input class="form-feed-input hay solids" type="number" placeholder="">
-            </div>
-            <div>
-              <label>MJ / kg</label>
-              <input class="form-feed-input hay-mj" type="number" placeholder="">
-              <input class="form-feed-input hay solids" type="number" placeholder="">
-              <input class="form-feed-input hay solids" type="number" placeholder="">
-              <input class="form-feed-input hay solids" type="number" placeholder="">
-              <input class="form-feed-input hay solids" type="number" placeholder="">
-              <input class="form-feed-input hay solids" type="number" placeholder="">
-              <input class="form-feed-input hay solids" type="number" placeholder="">
-              <input class="form-feed-input hay solids" type="number" placeholder="">
-            </div>
-            <div>
-              <label>gr smrp / kg</label>
-              <input class="form-feed-input hay-smrp" type="number" placeholder="">
-              <input class="form-feed-input hay solids" type="number" placeholder="">
-              <input class="form-feed-input hay solids" type="number" placeholder="">
-              <input class="form-feed-input hay solids" type="number" placeholder="">
-              <input class="form-feed-input hay solids" type="number" placeholder="">
-              <input class="form-feed-input hay solids" type="number" placeholder="">
-              <input class="form-feed-input hay solids" type="number" placeholder="">
-              <input class="form-feed-input hay solids" type="number" placeholder="">
-            </div>
-            
-            <div>
-              <label>Ca (g)</label>
-              <input class="form-feed-input hay-ca" type="number" placeholder="">
-              <input class="form-feed-input hay-ca solids" type="number" placeholder="" value="1">
-              <input class="form-feed-input hay-ca solids" type="number" placeholder="" value="4">
-              <input class="form-feed-input hay solids" type="number" placeholder="">
-              <input class="form-feed-input hay solids" type="number" placeholder="">
-              <input class="form-feed-input hay solids" type="number" placeholder="">
-              <input class="form-feed-input hay solids" type="number" placeholder="">
-              <input class="form-feed-input hay solids" type="number" placeholder="">
-            </div>
-            
-            <div>
-              <label>P (g)</label>
-              <input class="form-feed-input hay-p" type="number" placeholder="">
-              <input class="form-feed-input hay solids" type="number" placeholder="">
-              <input class="form-feed-input hay solids" type="number" placeholder="">
-              <input class="form-feed-input hay solids" type="number" placeholder="">
-              <input class="form-feed-input hay solids" type="number" placeholder="">
-              <input class="form-feed-input hay solids" type="number" placeholder="">
-              <input class="form-feed-input hay solids" type="number" placeholder="">
-              <input class="form-feed-input hay solids" type="number" placeholder="">
-            </div>
-            
-            <div>
-              <label>Mg (g)</label>
-              <input class="form-feed-input hay-mg" type="number" placeholder="">
-              <input class="form-feed-input hay solids" type="number" placeholder="">
-              <input class="form-feed-input hay solids" type="number" placeholder="">
-              <input class="form-feed-input hay solids" type="number" placeholder="">
-              <input class="form-feed-input hay solids" type="number" placeholder="">
-              <input class="form-feed-input hay solids" type="number" placeholder="">
-              <input class="form-feed-input hay solids" type="number" placeholder="">
-              <input class="form-feed-input hay solids" type="number" placeholder="">
-            </div>
-            
-            <div>
-              <label>Se (mg)</label>
-              <input class="form-feed-input hay-se" type="number" placeholder="">
-              <input class="form-feed-input hay solids" type="number" placeholder="">
-              <input class="form-feed-input hay solids" type="number" placeholder="">
-              <input class="form-feed-input hay solids" type="number" placeholder="">
-              <input class="form-feed-input hay solids" type="number" placeholder="">
-              <input class="form-feed-input hay solids" type="number" placeholder="">
-              <input class="form-feed-input hay solids" type="number" placeholder="">
-              <input class="form-feed-input hay solids" type="number" placeholder="">
-            </div> #}-->
-            <br/>
           </div>
           <div class="add-row"><span>Lägg till rad</span>+</div>
           <input class="form-feed-submit" type="submit" value="Beräkna">
@@ -239,7 +152,8 @@
     </main>
   </body>
   <footer>
-    random
+    <P>Programmet är endast ett hjälpmedel och du som ägare bär huvudansvaret för att din häst har en korrekt foderstat.</P>
+    <p>Programmet är inte utformat för att upptäcka giftiga överdoseringar eller doseringar som kan orsaka störningar.</p>
   </footer>
   <script type="text/javascript" src="assets/scripts/main.js"></script>
 </html>

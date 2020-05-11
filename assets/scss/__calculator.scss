@@ -1,5 +1,7 @@
 .feeding-calculator-wrapper {
-    width: 95%;
+    width: 100%;
+    box-sizing: border-box;
+    max-width: $max-width;
     padding: 15px;
     background-color: $primary_gray;
     outline: 3px solid $accent_color;
@@ -80,6 +82,7 @@
             span {
                 position: absolute;
                 top: -20px;
+                left: 0;
                 font-size: 0.8rem;
                 white-space: nowrap;
             }

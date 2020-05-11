@@ -3,7 +3,9 @@
     background-color: $primary_gray;
     padding: 15px;
     margin: 15px auto;
-    width: 90%;
+    width: 100%;
+    max-width: $max-width;
+    box-sizing: border-box;
 
     form {
         background-color: $light_gray;
@@ -32,10 +34,14 @@
                 padding: 15px;
             }
         }
+        
         .profile-section {
             display: block;
             padding: 15px;
+            box-sizing: border-box;
+            flex-basis: 33%;
         }
+
         input[type=submit] {
             flex-basis: 100%;
             width: 100px;
