@@ -1,10 +1,12 @@
 # Feed Calculator
 
 - Created 2020-02-28
-Still a work in progress!
+A simple application that calculates what my horse's feed needs.
 
-A simple application that will make the calculation of what my horse's feed 
-need.
+## Installation
+
+Checkout the repository and run npm install in the folder.
+open index.html in your browser and have fun calculating.
 
 ## Authors
 
