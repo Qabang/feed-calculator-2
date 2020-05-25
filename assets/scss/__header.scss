@@ -15,28 +15,29 @@ header {
             font-size: 4rem;
             color: $accent_color;
             margin: 0;
-            
+
             span {
                 font-size: 2rem;
             }
         }
-        
+
         nav {
             margin-top: 15px;
-            
-            ul {    
+
+            ul {
                 display: flex;
                 list-style: none;
                 padding: 0;
                 color: $white;
-                
+
                 li {
                     padding: 15px;
                     padding-bottom: 5px;
                     font-size: 1.6rem;
                 }
-                
+
             }
+
             li:first-child {
                 padding-left: 0;
             }

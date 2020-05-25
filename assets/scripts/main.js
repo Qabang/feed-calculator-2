@@ -1,6 +1,6 @@
 
 // Populate weight options
-for (let i = 100; i <= 800; i += 100) {
+for (let i = 100; i <= 1000; i += 50) {
   // get reference to select element
   let weight_select = document.getElementById('weight');
 
@@ -49,13 +49,17 @@ function capitalizeFirstLetter(string) {
 /**
  * Print results
  */
-function printResult(section, mj, smrp, ca, phosphor, mg) {
+function printResult(section, mj, smrp, ca, phosphor, mg, selenium = false) {
   // Print result and round to closest Integer.
   document.querySelector('.result-' + section + '-mj').innerHTML = Math.round(mj)
   document.querySelector('.result-' + section + '-smrp').innerHTML = Math.round(smrp)
   document.querySelector('.result-' + section + '-ca').innerHTML = ca.toFixed(1)
   document.querySelector('.result-' + section + '-p').innerHTML = Math.round(((phosphor + 0.00001) * 100) / 100)
   document.querySelector('.result-' + section + '-mg').innerHTML = Math.round(((mg + Number.EPSILON) * 100) / 100)
+  
+  if (selenium) {
+    document.querySelector('.result-' + section + '-selen').innerHTML = selenium.toFixed(1)
+  }
   
   // If the total is less than 0 or higher than 5 alert user by adding color changeing class 
   document.querySelectorAll('li[class*="-total"]').forEach(element => {
@@ -65,6 +69,10 @@ function printResult(section, mj, smrp, ca, phosphor, mg) {
     }
     else if (parseFloat(element.innerHTML) > 5.0) {
       element.classList.add('high-value')
+
+      if (element.classList.contains('result-total-selen')) {
+        alert('The amount of selenium is probably toxic for your horse!')
+      }
     }
     else if (parseFloat(element.innerHTML) > -1 && parseFloat(element.innerHTML) < 1) {
       element.classList.add('good-value')
@@ -76,9 +84,6 @@ function printResult(section, mj, smrp, ca, phosphor, mg) {
  * Catch form inputs in submit and display the results
  */
 function profile_submit() {
-  let mj
-  let smrp
-
   let name = document.querySelector('.name').value
   let born = document.querySelector('.born').value
   let weight = document.querySelector('.weight').value
@@ -108,6 +113,11 @@ function profile_submit() {
 
   if (age > 65) {
     alert('The worlds oldest horse Billy died at the age of 62 years are you sure your horse is ' + age + ' years old?')
+    document.querySelector('.born').classList.add('error');
+    return;
+  }
+  else {
+    document.querySelector('.born').classList.remove('error');
   }
 
   if (weight == 'null') {
@@ -142,8 +152,6 @@ function profile_submit() {
  * @param {string} type 
  */
 function base_amount_calculation (age, weight, type) {
-  // Result container
-  let result_need = document.querySelector('.result-need')
   let result;
   // General need for adult horse.
   mj = 0.5 * (parseInt(weight)**0.75)
@@ -151,9 +159,12 @@ function base_amount_calculation (age, weight, type) {
   ca = parseFloat(weight/100) * 4
   mg = parseFloat(weight/100) * 1.5;
   phosphor = parseFloat(weight/100) * 2.8;
+  selenium = parseFloat(weight/100) * 0.2;
 
   if (age < 3) {
     // Todo
+    alert("Unfortunatly we don't calculate the need for growing horses at the moment")
+    return;
   }
   else if (age < 20) {
   
@@ -167,7 +178,7 @@ function base_amount_calculation (age, weight, type) {
 
     }
 
-    result = {'mj': mj, 'smrp': smrp, 'ca': ca, 'p': phosphor, 'mg': mg}
+    result = {'mj': mj, 'smrp': smrp, 'ca': ca, 'p': phosphor, 'mg': mg, 'selen': selenium}
   }
   else {
     // If older than 20
@@ -175,7 +186,7 @@ function base_amount_calculation (age, weight, type) {
     
   }
   
-  printResult('need', mj, smrp, ca, phosphor, mg)
+  printResult('need', mj, smrp, ca, phosphor, mg, selenium)
 
   return result
   
@@ -186,11 +197,25 @@ function base_amount_calculation (age, weight, type) {
  * @param {int} weight 
  */
 function work_amount_calculation(weight, base) {
-  // Result container
-  let result_work = document.querySelector('.result-work')
 
   let walk_time = document.querySelector('.walk').value
   let trot_time = document.querySelector('.trot').value
+  
+  if (walk_time == '' && trot_time == '') {
+    let result_box = document.querySelector('.result-work');
+    
+    result_box.querySelectorAll('li').forEach(element => {
+      element.innerHTML = '';
+    });
+
+    return;
+  }
+  else if (walk_time == '') {
+    walk_time = 0;
+  }
+  else if (trot_time == '') {
+    trot_time = 0;
+  }
 
   walk_mj = (((0.2/100) * weight) / 10) * walk_time
   walk_smrp = 6 * walk_mj
@@ -250,7 +275,7 @@ function feed_input_collection(feed_type) {
         amount = amount * (child.value / 100);
       }
     }
-
+    
     total += (parseFloat(element.value * amount))
   });
 
@@ -269,64 +294,16 @@ function feed_calculation() {
   let ca_total_feed = feed_input_collection('ca');
   let mg_total_feed = feed_input_collection('mg');
   let p_total_feed = feed_input_collection('p');
- 
-  console.log(profile);
-  console.log(need_result);
-  console.log(work_result);
 
   mj = calculate(need_result['mj'],work_result['mj'], mj_total_feed)
   smrp = calculate(need_result['smrp'],work_result['smrp'], smrp_total_feed)
   ca = calculate(need_result['ca'], work_result['ca'], ca_total_feed)
   p = calculate(need_result['p'], work_result['p'], p_total_feed)
   mg = calculate(need_result['mg'], work_result['mg'], mg_total_feed)
+  selen = calculate(need_result['selen'], 0, selen_total_feed)
   
-  printResult('feed', mj['given'], smrp['given'], ca_total_feed, p_total_feed, mg_total_feed)
-  printResult('total', mj['result'], smrp['result'], ca['result'], p['result'], mg['result'])
-
-}
-
-/**
- * TODO rework as minerals
- */
-function hay_calculation() {
-  let result_feed = document.querySelector('.result-feed')
-  let mj
-  let smrp
-  let ca
-  let p
-  let ca_p
-  let mg
-  let selen
-
-
-  let hay_amount = document.querySelector('.hay-amount').value
-  let hay_solids = document.querySelector('.hay-solids').value
-  let hay_mj = document.querySelector('.hay-mj').value
-  let hay_smrp = document.querySelector('.hay-smrp').value
-  let hay_ca = document.querySelector('.hay-ca').value
-  let hay_p = document.querySelector('.hay-p').value
-  let hay_mg = document.querySelector('.hay-mg').value
-  let hay_se = document.querySelector('.hay-se').value
-
-  hay_solids = parseFloat(hay_solids/100)
-  hay_solid_amount = parseFloat(hay_amount) * parseFloat(hay_solids)
-  hay_smrp = parseFloat(hay_smrp)
-  hay_ca = parseFloat(hay_ca)
-  hay_p = parseFloat(hay_p)
-  hay_mg = parseFloat(hay_mg)
-  hay_se = parseFloat(hay_se)
-
-  mj = Math.round(hay_solid_amount * hay_mj)
-  smrp = Math.round(hay_smrp * hay_amount)
-  ca = Math.round(hay_ca * hay_solid_amount)
-  p = Math.round(hay_p * hay_solid_amount)
-  ca_p = Math.round(ca/p)
-  mg = Math.round(hay_mg * hay_solid_amount)
-  selen = Math.round(hay_se * hay_solid_amount)
-
-  let result = {'mj': mj, 'smrp': smrp, 'ca': ca, 'p': p, 'ca/p': ca_p, 'mg': mg, 'selen': selen}
-
-  return result
+  printResult('feed', mj['given'], smrp['given'], ca_total_feed, p_total_feed, mg_total_feed, selen_total_feed)
+  printResult('total', mj['result'], smrp['result'], ca['result'], p['result'], mg['result'], selen['result'])
 
 }
 

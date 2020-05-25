@@ -38,7 +38,7 @@
 
             .calculator-labels {
                 font-family: Verdana, Geneva, Tahoma, sans-serif;
-                font-size: 0.7rem;
+                font-size: 0.9rem;
                 text-align: center;
                 
                 label {
@@ -49,10 +49,19 @@
                         background: lighten($light_gray, 3%);
                     }
                 }
+
                 span {
                     @media screen and (max-width: 767px){
                         display: block;
                     }
+                }
+
+                @media screen and (max-width: 375px) {
+                    font-size: 0.625rem;
+                }
+
+                @media screen and (max-width: 767px) and (min-width: 376px) {
+                    font-size: 0.7rem;
                 }
             }
         }
@@ -69,8 +78,19 @@
             margin: 0;
             max-width: 120px;
             width: 12%;
-            box-sizing: border-box
+            box-sizing: border-box;
+            font-size: 0.9rem;
+
+            @media screen and (max-width: 375px) {
+                font-size: 0.625rem;
+                padding: 10px 5px;
+            }
+
+            @media screen and (max-width: 767px) and (min-width: 376px) {
+                font-size: 0.7rem;
+            }
         }
+
         div:not(.add-row) {
             display: flex;
             flex-basis: 100%;
@@ -126,21 +146,13 @@
     .profile-name {
         flex-basis: 100%;
         text-align: center;
+        margin: 0;
     }
 
     section {
         width: 100%;
         font-family: $font;
         flex-basis: 22.5%;
-        border-right: solid $black 1px; 
-
-        &:first-of-type {
-            border: 0;
-        }
-
-        &:last-of-type {
-            border: 0;
-        }
 
         h2 {
             text-align: center;
@@ -148,12 +160,18 @@
             font-size: 1.5rem;
             margin: 20px 0;
             font-weight: unset;
+            white-space: nowrap;
 
             @media screen and (max-width: 768px) {
                 text-align: left;
                 margin-left: calc(25% + 20px);
             }
+
+            @media screen and (max-width: 1023px) and (min-width: 769px) {
+                font-size: 1.1rem;
+            }
         }
+
         ul {
             display: block;
             padding: 0;
@@ -192,6 +210,7 @@
             li:nth-of-type(odd) {
                 background-color: $light_gray;
             }
+
             li:nth-of-type(even) {
                 background-color: lighten($light_gray, 5%);
             }
@@ -209,6 +228,7 @@
 
             ul {
                 margin: 0;
+                
                 li {
                     text-align: right;
                     background: transparent;
@@ -221,6 +241,10 @@
         @media screen and (max-width: 768px) {
             flex-basis: unset;
             border: 0;
+        }
+
+        @media screen and (max-width: 1023px) and (min-width: 769px) {
+            flex-basis: 22%;
         }
     }
 
