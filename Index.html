@@ -8,14 +8,6 @@
   <header>
     <div class="header-wrapper">
       <h1>Equine <span>Feed Estimator</span></h1>
-      <nav>
-        <!--TODO-->
-        <ul>
-          <li>Start</li>
-          <li>Profiler</li>
-          <li>Sparade beräkningar</li>
-        </ul>
-      </nav>
     </div>
   </header>
   <body>
@@ -54,16 +46,17 @@
             </div>
           </div>
           <div class="profile-section">
-            <label>Arbete i minuter per dag</label>
-            <div clas="profile-work">
-              <input class="walk" type="" placeholder="Skritt" value="30"> min 
-              <input class="trot" type="" placeholder="Trav / Galopp" value="30"> min
+            <label>Arbete i minuter per dag:</label>
+            <div class="profile-work">
+              <label>Skritt</label><input class="walk" type="" placeholder="Skritt" value="30">
+              <label>Trav/Galopp</label><input class="trot" type="" placeholder="Trav / Galopp" value="30">
             </div>
           </div>
             <input type="submit" value="Spara">
         </div>
       </form>
-      <div class="result-wrapper">  
+      <div class="result-wrapper"> 
+        <h2 class="profile-name"></h2> 
         <section class="result-labels result">
           <ul>  
             <li class="result-labels-mj">MJ</li>
@@ -86,7 +79,7 @@
           </ul>
         </section>
         <section class="result-work result">
-          <h2>Arbete:</h2>
+          <h2>Tillägg för arbete:</h2>
           <ul>  
               <label>Mj</label><li class="result-work-mj"></li>
               <label>G smb rp</label><li class="result-work-smrp"></li>
@@ -97,7 +90,7 @@
             </ul>
         </section>
         <section class="result-feed result">
-          <h2>foder:</h2>
+          <h2>Fodrets innehåll:</h2>
           <ul>  
               <label>Mj</label><li class="result-feed-mj"></li>
               <label>G smb rp</label><li class="result-feed-smrp"></li>
@@ -124,15 +117,15 @@
         
         <form class="form-feed" onsubmit="event.preventDefault(); feed_calculation();">
           <div class="feeding-calculator-flex-wrap">
-            <div>
+            <div class="calculator-labels">
               <label>Antal kg</label>
-              <label>TS %</label>
+              <label>TS <span>%</span></label>
               <label>MJ / kg</label>
               <label>gr smrp / kg</label>
-              <label>Ca (g)</label>
-              <label>p (g)</label>
-              <label>mg (g)</label>
-              <label>selen (mg)</label>
+              <label>Ca <span>(g)</span></label>
+              <label>p <span>(g)</span></label>
+              <label>mg <span>(g)</span></label>
+              <label>selen <span>(mg)</span></label>
             </div>
             <div class="feed-row feed-row-1">
               <input step="0.01" class="form-feed-input input-amount" type="number" placeholder="">

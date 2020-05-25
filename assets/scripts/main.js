@@ -42,6 +42,10 @@ function addRow() {
   }
 }
 
+function capitalizeFirstLetter(string) {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
 /**
  * Print results
  */
@@ -55,7 +59,6 @@ function printResult(section, mj, smrp, ca, phosphor, mg) {
   
   // If the total is less than 0 or higher than 5 alert user by adding color changeing class 
   document.querySelectorAll('li[class*="-total"]').forEach(element => {
-    console.log(parseFloat(element.innerHTML));
     
     if (parseFloat(element.innerHTML) < 0) {
       element.classList.add('low-value')
@@ -81,8 +84,6 @@ function profile_submit() {
   let weight = document.querySelector('.weight').value
   let look = document.querySelector('.hull').value
   let type = document.querySelector('.type').value
-
-  console.log(born.length);
   
   if (born == '' || born.length != 4) {
     alert('Error! Enter the year the horse was born with four digits');
@@ -116,6 +117,10 @@ function profile_submit() {
   }
   else {
     document.querySelector('.weight').classList.remove('error');
+  }
+
+  if (name != '') {
+    document.querySelector('.profile-name').innerHTML = 'Uträkning för ' + capitalizeFirstLetter(name);
   }
 
   let base = base_amount_calculation (age, weight, type)

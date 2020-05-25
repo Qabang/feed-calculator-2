@@ -35,6 +35,26 @@
             align-items: center;
             justify-content: center;
             flex-wrap: wrap;
+
+            .calculator-labels {
+                font-family: Verdana, Geneva, Tahoma, sans-serif;
+                font-size: 0.7rem;
+                text-align: center;
+                
+                label {
+                    padding: 5px;
+                    box-sizing: border-box;
+                    
+                    &:nth-child(even) {
+                        background: lighten($light_gray, 3%);
+                    }
+                }
+                span {
+                    @media screen and (max-width: 767px){
+                        display: block;
+                    }
+                }
+            }
         }
         
         .form-feed {
@@ -72,7 +92,7 @@
             display: inline-block;
             width: 30px;
             height: 30px;
-            margin: 25px 0 0 23px;
+            margin: 25px 0 0 2%;
             color: $black;
             background-color: $accent_color;
             font-size: 1.5rem;
@@ -97,14 +117,30 @@
 
 .result-wrapper {
     display: flex;
-    width: 90%;
+    width: 100%;
+    max-width: 1000px;
     margin: auto;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
+    margin: 30px auto;
+
+    .profile-name {
+        flex-basis: 100%;
+        text-align: center;
+    }
+
     section {
         width: 100%;
-        min-height: 250px;
         font-family: $font;
-        flex-basis: 16.6%;
+        flex-basis: 22.5%;
+        border-right: solid $black 1px; 
+
+        &:first-of-type {
+            border: 0;
+        }
+
+        &:last-of-type {
+            border: 0;
+        }
 
         h2 {
             text-align: center;
@@ -121,6 +157,7 @@
         ul {
             display: block;
             padding: 0;
+            margin: 0;
 
             li {
                 list-style-type: none;
@@ -148,6 +185,7 @@
                 @media screen and (max-width: 768px) {
                     display: block;
                     flex-basis: 25%;
+                    text-align: right;
                 }
             }
             
@@ -167,7 +205,7 @@
         &.result-labels {
             margin-top: calc(1.5rem + 43px);
             width: 50%;
-            flex-basis: 16.6%;
+            flex-basis: 9%;
 
             ul {
                 margin: 0;
@@ -179,8 +217,10 @@
                 }
             }
         }
+
         @media screen and (max-width: 768px) {
             flex-basis: unset;
+            border: 0;
         }
     }
 
@@ -194,6 +234,7 @@
 
     @media screen and (max-width: 768px) {
         flex-wrap: wrap;
+        flex-basis: 16.6%;
 
         .result-labels {
             display: none;
