@@ -56,9 +56,19 @@ function printResult(section, mj, smrp, ca, phosphor, mg, selenium = false) {
   document.querySelector('.result-' + section + '-ca').innerHTML = ca.toFixed(1)
   document.querySelector('.result-' + section + '-p').innerHTML = Math.round(((phosphor + 0.00001) * 100) / 100)
   document.querySelector('.result-' + section + '-mg').innerHTML = Math.round(((mg + Number.EPSILON) * 100) / 100)
-  
+
   if (selenium) {
     document.querySelector('.result-' + section + '-selen').innerHTML = selenium.toFixed(1)
+
+    // Selenium is really toxic if given to much.
+    // Alert if the value is greater than 5mg.
+    if (document.querySelector('.result-' + section + '-selen').innerHTML > 5.0 && alerted == false) {
+      alert('The amount of selenium is probably toxic for your horse!')
+      alerted = true;
+    }
+    else {
+      alerted = false;
+    }
   }
   
   // If the total is less than 0 or higher than 5 alert user by adding color changeing class 
@@ -69,10 +79,6 @@ function printResult(section, mj, smrp, ca, phosphor, mg, selenium = false) {
     }
     else if (parseFloat(element.innerHTML) > 5.0) {
       element.classList.add('high-value')
-
-      if (element.classList.contains('result-total-selen')) {
-        alert('The amount of selenium is probably toxic for your horse!')
-      }
     }
     else if (parseFloat(element.innerHTML) > -1 && parseFloat(element.innerHTML) < 1) {
       element.classList.add('good-value')
@@ -142,7 +148,9 @@ function profile_submit() {
     'weight' : weight,
     'type' : type
   }
-  return profile
+
+  document.querySelector('.result-wrapper').scrollIntoView({behavior: 'smooth'});
+  return feed_calculation(profile);
 }
 
 /**
@@ -197,13 +205,12 @@ function base_amount_calculation (age, weight, type) {
  * @param {int} weight 
  */
 function work_amount_calculation(weight, base) {
-
   let walk_time = document.querySelector('.walk').value
   let trot_time = document.querySelector('.trot').value
   
   if (walk_time == '' && trot_time == '') {
     let result_box = document.querySelector('.result-work');
-    
+    // If there is no work added. Clear that table from data.
     result_box.querySelectorAll('li').forEach(element => {
       element.innerHTML = '';
     });
@@ -246,7 +253,7 @@ function work_amount_calculation(weight, base) {
   ca = work_ca - base['ca']
   p = work_p - base['p']
   mg = work_mg - base['mg']
-
+  
   printResult('work', mj, smrp, ca, p, mg)
   // TODO MINERALS
   return {'mj': mj,'smrp': smrp, 'ca': ca, 'p': p, 'mg': mg}
@@ -283,8 +290,7 @@ function feed_input_collection(feed_type) {
 }
 
 
-function feed_calculation() {
-  let profile = profile_submit()
+function feed_calculation(profile) {
   let need_result = base_amount_calculation(profile['age'],profile['weight'], profile['type'])
   let work_result = work_amount_calculation(profile['weight'], need_result)
   
@@ -295,11 +301,22 @@ function feed_calculation() {
   let mg_total_feed = feed_input_collection('mg');
   let p_total_feed = feed_input_collection('p');
 
-  mj = calculate(need_result['mj'],work_result['mj'], mj_total_feed)
-  smrp = calculate(need_result['smrp'],work_result['smrp'], smrp_total_feed)
-  ca = calculate(need_result['ca'], work_result['ca'], ca_total_feed)
-  p = calculate(need_result['p'], work_result['p'], p_total_feed)
-  mg = calculate(need_result['mg'], work_result['mg'], mg_total_feed)
+  if (work_result) {
+    mj = calculate(need_result['mj'],work_result['mj'], mj_total_feed)
+    smrp = calculate(need_result['smrp'],work_result['smrp'], smrp_total_feed)
+    ca = calculate(need_result['ca'], work_result['ca'], ca_total_feed)
+    p = calculate(need_result['p'], work_result['p'], p_total_feed)
+    mg = calculate(need_result['mg'], work_result['mg'], mg_total_feed)
+  }
+  // If there is no work added. woek_amount equals to 0.
+  else {
+    mj = calculate(need_result['mj'], 0, mj_total_feed)
+    smrp = calculate(need_result['smrp'], 0, smrp_total_feed)
+    ca = calculate(need_result['ca'], 0, ca_total_feed)
+    p = calculate(need_result['p'], 0, p_total_feed)
+    mg = calculate(need_result['mg'], 0, mg_total_feed)
+  }
+
   selen = calculate(need_result['selen'], 0, selen_total_feed)
   
   printResult('feed', mj['given'], smrp['given'], ca_total_feed, p_total_feed, mg_total_feed, selen_total_feed)
