@@ -5,18 +5,6 @@ body {
     background-color: $secondary_gray;
 }
 
-html {
-    font-family: $font;
-}
-
-h1 {
-    font-size: 4rem;
-}
-
-h2 {
-    font-size: 2rem;
-}
-
 header,
 footer {
     padding: 2rem;
@@ -43,10 +31,9 @@ select {
     border: 0;
     padding: 5px;
     border-radius: 0;
-    box-sizing: border-box;
 }
 
-input[type=submit], button {
+input[type=submit] {
     margin: 1rem auto 0;
     padding: 15px 10px;
     background-color: $accent_color;
@@ -64,45 +51,6 @@ input[type=submit], button {
 }
 
 .error {
-    outline: 3px solid red;
+    border: 1px solid red;
     box-sizing: border-box;
-}
-
-.error-list {
-    display: none;
-    background: rgb(252, 216, 216);
-    border: 3px solid red;
-    color: red;
-    padding: 30px;
-}
-
-.wrapper {
-    background-color: lightgray;
-    width: 100%;
-    max-width: 1000px;
-    margin: auto;
-    min-height: 100%;
-    height: auto;
-    padding: 10px 20px;
-    align-items: center;
-    justify-content: center;
-}
-
-.banner {
-    background-image: url(../../images/horses-banner.jpg);
-    background-size: contain;
-    height: 100%;
-    width: 100%;
-    max-height: 240px;
-    display: flex;
-
-    h2 {
-        text-align: center;
-        display: block;
-        background: rgba($color: $white, $alpha: 0.7);
-        padding: 15px 25px;
-        align-self: flex-end;
-        flex: 100%;
-        margin-bottom: 0;
-    }
 }
