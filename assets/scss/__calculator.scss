@@ -1,3 +1,7 @@
+.calculator-banner {
+    background-image: url(../../images/drafthorse-field.jpg);
+}
+
 .feeding-calculator-wrapper {
     width: 100%;
     box-sizing: border-box;
@@ -10,7 +14,7 @@
     form {
         width: auto;
         height: auto;
-        background-color: $light_gray;
+        background-color: lighten($light_gray, 10%);
         margin: auto;
         padding-bottom: 15px;
 
@@ -208,11 +212,23 @@
             }
             
             li:nth-of-type(odd) {
-                background-color: $light_gray;
+                background-color: rgba($color: $white, $alpha: 0.5);
+
+                &.high-value, .low-value {
+                    background-color: rgba($color: #ff0000, $alpha: 0.3)!important;
+                }
             }
 
             li:nth-of-type(even) {
-                background-color: lighten($light_gray, 5%);
+                background-color: rgba($color: darken($white, 5%), $alpha: 0.5);
+            }
+
+            .low-value:nth-of-type(odd), .high-value:nth-of-type(odd) {
+                background-color: rgba($color: #ff0000, $alpha: 0.4)!important;
+            }
+
+            .good-value:nth-of-type(odd) {
+                background-color: rgba($color: #008000, $alpha: 0.4)!important;
             }
 
             @media screen and (max-width: 768px) {
@@ -249,11 +265,12 @@
     }
 
     .high-value, .low-value {
-        color: darkred;
+        color: black;
+        background-color: rgba($color: #ff0000, $alpha: 0.5)!important;
     }
 
     .good-value {
-        color: green;
+        background-color: rgba($color: green, $alpha: 0.5)!important;
     }
 
     @media screen and (max-width: 768px) {
@@ -264,4 +281,18 @@
             display: none;
         }
     }
+}
+
+#save-calculation {
+    margin: 1rem 50% 0;
+    transform: translateX(-50%);
+    margin-right: 0;
+    white-space: nowrap;
+    padding: 15px 10px;
+    background-color: #f7931e;
+    font-family: "Play",sans-serif;
+    font-size: 1rem;
+    border: 0;
+    border-radius: 15px;
+    box-shadow: 2px 2px 5px #000;
 }

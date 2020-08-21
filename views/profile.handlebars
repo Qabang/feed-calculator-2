@@ -1,0 +1,71 @@
+<img src="/images/horse-silhouette.png" alt="Vector horse silouette in black" class="profile-horse-image">
+<div class="profile-wrapper profile-card">
+    <section>
+        <h2>{{ name }}</h2>
+        <p>Född: {{born}}</p>
+        <p>Kön: {{gender}}</p>
+    </section>
+    <section>
+        <p class="h2">Status</p>
+        <p>Hull: {{look}}</p>
+        <p>Vikt: {{weight}}kg</p>
+        <p>Typ: {{type}}</p>
+    </section>
+    <section>
+        <p class="h2">Arbete</p>
+        <p>Skritt: 
+            {{#if walk }}
+                {{walk}}
+            {{else}}
+                0
+            {{/if}}
+         min
+        </p>
+        <p>Trav / Galopp:
+            {{#if trotCanter }}
+                {{trotCanter}}
+            {{else}}
+                0
+            {{/if}}
+         min
+        </p>
+    </section>
+    <button class="change-profile-button">Ändra profilen</button>
+</div>
+<div class="profile-wrapper calculations">
+    <section>
+        <h2>Beräkningar</h2>
+        <a href="/calculate/{{name}}"><button class="profile-calculation-button">Gör en ny Foderstatsberäkning</button></a>
+
+        {{#each rations as |ration i|}}
+            <section class="feed-ratio-card">
+                <p class="date-changed">Senast ändrad: {{ration.edited}}</p>
+                <ul data-index="{{ration.id}}" class="profile-wrapper feed-ratio-ul-{{ration.id}}" style="display:flex; list-style-type:none">
+                {{#each ration as |value i|}}
+                    {{#ifvalue @key value="id"}}
+                    {{else}}
+                        <div style="width: 100%">
+                            <label>{{@key}}</label>
+                            {{#each value as |item i|}}
+                                <li class="row-{{i}}">
+                                    {{#if item}}
+                                        {{item}}
+                                    {{else}}
+                                        -
+                                    {{/if}}
+                                </li>
+                            {{/each}}
+                        </div>
+                    {{/ifvalue}}
+                {{/each}}
+                {{name}}
+                    <button class="no-class" data-index={{ration.id}} type="submit" onclick="editCalculation({{ration.id}}, '{{ ../name }}')">Ändra</button>    
+                </ul>
+            </section>
+        {{/each}}
+    </section>
+<div>
+
+</div>
+</div>
+<script type="text/javascript" src="/scripts/main.js"></script>
