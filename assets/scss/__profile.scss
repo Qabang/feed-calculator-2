@@ -1,3 +1,7 @@
+.add-profile-banner {
+    background-image: url(../../images/horse-kisses.jpg);
+}
+
 .profile {
     outline: 3px solid $accent_color;
     background-color: $primary_gray;
@@ -8,7 +12,7 @@
     box-sizing: border-box;
 
     form {
-        background-color: $light_gray;
+        background-color: lighten($light_gray, 10%);
         width: auto;
         padding: 15px;
         margin-bottom: 0;
@@ -75,4 +79,147 @@
             height: auto;
         }
     }
+}
+
+.profile-wrapper {
+    display: flex;
+    padding: 15px;
+    margin: 15px auto;
+    width: 100%;
+    max-width: $max-width;
+    box-sizing: border-box;
+    border-bottom: 3px solid $accent_color;
+
+    h2 {
+        display: inline-block;
+        color: $accent_color;
+        margin-bottom: 15px;
+        font-weight: 100;
+    }
+
+    .h2 {
+        @extend h2;
+        color: $white;
+    }
+
+    section:not(.feed-ratio-card) {
+        width: 100%;
+        box-sizing: border-box;
+
+        .profile-calculation-button {
+            float: right;
+        }
+    }
+
+    button {
+        cursor: pointer;
+        
+        &:hover {
+            cursor: pointer;
+            background-color: lighten($accent_color, 10%);
+        }
+    }
+}
+
+
+.feed-ratio-card {
+    background-color: lightgray;
+    margin: 20px 0;
+    padding: 0;
+    width: 100%;
+    box-sizing: border-box;
+
+    .date-changed {
+        display: block;
+        width: 100%;
+        margin: 0;
+        background-color: $primary_gray;
+        color: $accent_color;
+        font-weight: bold;
+        padding: 10px;
+        box-sizing: border-box;
+    }
+
+    ul {
+
+        button {
+            margin: auto 15px;
+            padding: 5px 10px;
+            background-color: $accent_color;
+            font-family: $font;
+            font-size: 1rem;
+            border: none;
+            border-radius: 15px;
+            box-shadow: 2px 2px 5px black;
+            outline: 0;
+            height: 40px;
+        }
+
+        label {
+            font-weight: 900;
+            color: $black;
+        }
+
+        div {
+            li:nth-child(odd) {
+                background-color: lighten(lightgray, 3%);
+            }
+
+            li:nth-child(even) {
+                background-color: darken(lightgray, 3%);
+            }
+        }
+
+        div:nth-last-child(2) {
+            display: none;
+        }
+    }
+}
+
+.profile-card {
+    width: 100%;
+    background-color: $light_gray;
+    flex-wrap: wrap;
+
+    section {
+        padding: 0;
+        background-color: lightgray;
+        flex-basis: 33.3%;
+
+        h2, .h2 {
+            background-color: $primary_gray;
+            width: 100%;
+            box-sizing: border-box;
+            margin-top: 0;
+            padding-left: 5px;
+        }
+
+        p {
+            padding-left: 15px;
+        }
+    }
+    .change-profile-button {
+        flex-basis: 100%;
+        margin-top: 15px;
+        padding: 5px 10px;
+        background-color: $accent_color;
+        font-family: $font;
+        font-size: 1rem;
+        border: none;
+        border-radius: 15px;
+        box-shadow: 2px 2px 5px black;
+        outline: 0;
+    }
+}
+
+.profile-card-no-border {
+    border: 0;
+}
+
+.profile-horse-image {
+    display: block;
+    max-width: 250px;
+    height: auto;
+    width: 100%;
+    margin: 0 auto;
 }

@@ -3,22 +3,28 @@
 for (let i = 100; i <= 1000; i += 50) {
   // get reference to select element
   let weight_select = document.getElementById('weight');
+  
+  if (weight_select) {
+    // create new option element
+    let option = document.createElement('option');
 
-  // create new option element
-  let option = document.createElement('option');
+    // create text node to add to option element (opt)
+    option.appendChild(document.createTextNode(i + 'kg'));
 
-  // create text node to add to option element (opt)
-  option.appendChild(document.createTextNode(i + 'kg'));
-
-  // set value property of opt
-  option.value = i; 
-
-  // add opt to end of select box (sel)
-  weight_select.appendChild(option); 
+    // set value property of opt
+    option.value = i; 
+    // add opt to end of select box (sel)
+    weight_select.appendChild(option); 
+  }
 }
 
 window.onload = function () {
-  document.querySelector('.add-row').addEventListener('click', addRow)
+  if (document.querySelector('.add-row')){
+    document.querySelector('.add-row').addEventListener('click', addRow)
+  }
+  if (document.querySelector('#save-calculation')) {
+    document.querySelector('#save-calculation').addEventListener('click', submitForm)
+  }
 }
 
 /**
@@ -84,6 +90,30 @@ function printResult(section, mj, smrp, ca, phosphor, mg, selenium = false) {
       element.classList.add('good-value')
     }
   });
+}
+/**
+ * Function for alreday registred profiles. And display results.
+ */
+function get_profile() {
+  let name = document.querySelector('.profile-name').innerHTML
+  let born = document.querySelector('.profile-born').innerHTML
+  let weight = document.querySelector('.profile-weight').innerHTML
+  let look = document.querySelector('.profile-look').innerHTML
+  let type = document.querySelector('.profile-type').innerHTML
+  let age = new Date().getFullYear() - born
+
+  let base = base_amount_calculation (age, weight, type)
+
+  work_amount_calculation(weight, base)
+
+  let profile = {
+    'age': age,
+    'weight' : weight,
+    'type' : type
+  }
+
+  document.querySelector('.result-wrapper').scrollIntoView({behavior: 'smooth'});
+  return feed_calculation(profile);
 }
 
 /**
@@ -159,7 +189,7 @@ function profile_submit() {
  * @param {int} weight 
  * @param {string} type 
  */
-function base_amount_calculation (age, weight, type) {
+function base_amount_calculation (age, weight, type) {  
   let result;
   // General need for adult horse.
   mj = 0.5 * (parseInt(weight)**0.75)
@@ -205,10 +235,29 @@ function base_amount_calculation (age, weight, type) {
  * @param {int} weight 
  */
 function work_amount_calculation(weight, base) {
-  let walk_time = document.querySelector('.walk').value
-  let trot_time = document.querySelector('.trot').value
+  let walk_time = 0;
+  if (document.querySelector('.walk')) {
+    walk_time = document.querySelector('.walk').value
+  }
+  else {
+    walk_time = document.querySelector('.profile-walk').innerHTML
+    console.log(walk_time);
+    
+    walk_time = walk_time.replace(/\D/g, '')
+  }
+
+  let trot_time = 0
+  if (document.querySelector('.trot')) {
+    trot_time = document.querySelector('.trot').value
+  }
+  else {
+    trot_time = document.querySelector('.profile-trot-canter').innerHTML
+    console.log(trot_time);
+    
+    trot_time = trot_time.replace(/\D/g, '')
+  }
   
-  if (walk_time == '' && trot_time == '') {
+  if ((walk_time == '' && trot_time == '') /*|| (walk_time == 0 && trot_time == 0)*/) {
     let result_box = document.querySelector('.result-work');
     // If there is no work added. Clear that table from data.
     result_box.querySelectorAll('li').forEach(element => {
@@ -235,7 +284,8 @@ function work_amount_calculation(weight, base) {
   
   // calculate ca value
   let percent_work = mj/base['mj'] * 100
-  if (percent_work < 30) {
+  let calculate = true;
+  if (percent_work < 30 && percent_work > 0) {
     work_ca = 6 * (weight/100)
     work_p = 3.6 * (weight/100)
     work_mg = 1.9 * (weight/100)
@@ -245,14 +295,28 @@ function work_amount_calculation(weight, base) {
     work_p = 4.2 * (weight/100)
     work_mg = 2.3 * (weight/100)
   }
-  else {
+  else if (percent_work > 50) {
     work_ca = 8 * (weight/100)
     work_p = 5.8 * (weight/100)
     work_mg = 3 * (weight/100)
   }
-  ca = work_ca - base['ca']
-  p = work_p - base['p']
-  mg = work_mg - base['mg']
+  else {
+    work_ca = 0
+    work_mg = 0
+    work_p = 0
+    calculate = false
+  }
+
+  if (calculate) {
+    ca = work_ca - base['ca']
+    p = work_p - base['p']
+    mg = work_mg - base['mg']
+  }
+  else {
+    ca = 0
+    p = 0
+    mg = 0
+  }
   
   printResult('work', mj, smrp, ca, p, mg)
   // TODO MINERALS
@@ -332,4 +396,24 @@ function calculate(need, work, feed) {
     'given': parseFloat(feed),
     'result': parseFloat(feed) - parseFloat(need + work)
   };
+}
+
+function submitForm() {
+  document.querySelector(".form-feed").submit();
+}
+
+function editCalculation(ratio_id, name) {
+  window.location.href = "/calculate/" + name + "?q=" + ratio_id;
+
+ let ratio = document.querySelector('.feed-ratio-ul-' + ratio_id)
+
+   ratio.querySelectorAll('label').forEach(element => {
+     if (element.innerHTML == 'amount') {
+      let child_li = element.parentNode.querySelectorAll('li')
+      console.log(child_li);
+      for (let index = 0; index < child_li.length; index++) {
+        addRow()
+      }
+     }
+   });
 }

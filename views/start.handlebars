@@ -1,0 +1,13 @@
+
+  Här kommer alla profiler finnas
+
+  <a href="/profile/add"><button>Skapa Ny Profil</button></a>
+
+  <ul>
+    {{#each horses as |horse i|}}
+        <li>
+            <a href="/profile/{{horse}}">{{horse}}</a>
+        </li>
+    {{/each}}
+</ul>
+  
