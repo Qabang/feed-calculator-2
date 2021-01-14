@@ -5,7 +5,8 @@
 
     <div class="profile">
         <ul class="error-list"></ul>
-        <form id="add-profile-form" method="POST" onsubmit="event.preventDefault(); validateProfile();" action="/profile/add">
+        <form id="add-profile-form" method="POST" onsubmit="event.preventDefault(); validateProfile('add');"
+            action="/profile/add">
             <div class="profile-basics">
                 <div class="profile-section">
                     <label>Namn</label>
@@ -42,7 +43,7 @@
                         <option value="900">900kg</option>
                         <option value="950">950kg</option>
                         <option value="1000">1000kg</option>
-                    </select><br/>
+                    </select><br />
                     <label>Typ</label>
                     <select id="type" class="type" name="type">
                         <option value="null">-</option>
@@ -63,11 +64,12 @@
                 <label>Arbete i minuter per dag:</label>
                 <div class="profile-work">
                     <label>Skritt</label><input name="walk" class="walk" type="number" placeholder="Skritt">
-                    <label>Trav / Galopp</label><input name="trotCanter" class="trot" type="nember" placeholder="Trav / Galopp">
+                    <label>Trav / Galopp</label><input name="trotCanter" class="trot" type="nember"
+                        placeholder="Trav / Galopp">
                 </div>
             </div>
             <input type="submit" value="Spara">
         </form>
     </div>
 </div>
-    <script type="text/javascript" src="/test.js"></script>
+<script type="text/javascript" src="/scripts/scripts.js"></script>

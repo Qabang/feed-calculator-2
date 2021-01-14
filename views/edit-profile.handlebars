@@ -1,0 +1,98 @@
+<div class="wrapper">
+    <div class="banner add-profile-banner">
+        <h2>Ändra profil för {{ name }}</h2>
+    </div>
+
+    <div class="profile">
+        <ul class="error-list"></ul>
+        <form id="edit-profile-form" method="POST" onsubmit="event.preventDefault(); validateProfile('edit');"
+            action="/profile/edit">
+            <div class="profile-basics">
+                <div class="profile-section">
+                    <label>Namn</label>
+                    <input name="name" value="{{ name }}" class="name" type="text" placeholder="Namn..."><br>
+                    <label>Född</label>
+                    <input name="born" value="{{ born }}" class="born" type="number" placeholder="YYYY"><br>
+                    <label>Kön</label>
+                    <select id="sex" class="sex" value="{{ gender }}" name="gender">
+                        {{#iff gender '==' 'stallion'}}
+                        <option selected value="stallion">Hingst</option>
+                        {{else}}
+                        <option value="stallion">Hingst</option>
+                        {{/iff}}
+
+                        {{#iff gender '==' 'gelding/mare'}}
+                        <option selected value="gelding/mare">Valack/Sto</option>
+                        {{else}}
+                        <option value="gelding/mare">Valack/Sto</option>
+                        {{/iff}}
+                    </select>
+                </div>
+                <div class="profile-section">
+                    <label>Vikt</label>
+                    <select id="weight" class="weight" name="weight">
+                        {{#for 100 1000 50}}
+                        {{#iff ../weight '==' this}}
+                        <option selected value="{{this}}">{{this}}kg</option>
+                        {{/iff}}
+                        <option value="{{this}}">{{this}}kg</option>
+                        {{/for}}
+                    </select><br />
+                    <label>Typ</label>
+                    <select value="{{ type }}" id="type" class="type" name="type">
+                        {{#iff type '==' 'type-easy'}}
+                        <option selected value="type-easy">
+                            {{else}}
+                        <option value="type-easy">
+                            {{/iff}}
+                            Lättfödd</option>
+
+                        {{#iff type '==' 'type-normal'}}
+                        <option selected value="type-normal">
+                            {{else}}
+                        <option value="type-normal">
+                            {{/iff}}
+                            Normalfödd</option>
+
+                        {{#iff type '==' 'type-hard'}}
+                        <option value="type-hard" selected>
+                            {{else}}
+                        <option value="type-hard">
+                            {{/iff}}
+                            Svårfödd</option>
+                    </select>
+                    <label>Hull</label>
+                    <select value="{{ look }}" class="hull" name="look">
+                        {{#iff look '==' 'normal'}}
+                        <option selected value="normal">Normal</option>
+                        {{else}}
+                        <option value="normal">Normal</option>
+                        {{/iff}}
+                        {{#iff look '==' 'thin'}}
+                        <option value="thin">Tunn</option>
+                        {{else}}
+                        <option value="thin">Tunn</option>
+                        {{/iff}}
+                        {{#iff look '==' 'fat'}}
+                        <option value="fat">Fet</option>
+                        {{else}}
+                        <option value="fat">Fet</option>
+                        {{/iff}}
+                    </select>
+                </div>
+            </div>
+            <div class="profile-section">
+                <label>Arbete i minuter per dag:</label>
+                <div class="profile-work">
+                    <label>Skritt</label><input value="{{ walk }}" name="walk" class="walk" type="number"
+                        placeholder="Skritt">
+                    <label>Trav / Galopp</label><input value="{{ trotCanter }}" name="trotCanter" class="trot"
+                        type="nember" placeholder="Trav / Galopp">
+                </div>
+            </div>
+            <input name="id" readonly hidden value="{{id}}">
+            <input type="submit" value="Spara">
+        </form>
+    </div>
+</div>
+<script type="text/javascript" src="/scripts/scripts.js"></script>

@@ -90,24 +90,47 @@
     box-sizing: border-box;
     border-bottom: 3px solid $accent_color;
 
-    h2 {
-        display: inline-block;
-        color: $accent_color;
-        margin-bottom: 15px;
-        font-weight: 100;
-    }
 
-    .h2 {
-        @extend h2;
-        color: $white;
-    }
+    .profile-headings {
+        flex-basis: 100%;
+        background: $primary-gray;
+        display: flex;
+        justify-content: space-between;
+        
+        h2 {
+            width: 33%;
+            margin: 0;
+            padding: 20px;
+            display: inline-block;
+            color: $accent_color;
+            margin-bottom: 15px;
+            font-weight: 100;
+        }
+        
+        .h2 {
+            @extend h2;
+            color: $white;
+            justify-content: flex-end;
+            display: flex;
 
+            span {
+                margin-right: auto;
+                margin-top: auto;
+            }
+        }
+    }
+    
     section:not(.feed-ratio-card) {
         width: 100%;
         box-sizing: border-box;
+        position: relative;
 
         .profile-calculation-button {
-            float: right;
+            position: absolute;
+            margin-left: 100%;
+            transform: translateX(-100%);
+            white-space: nowrap;
+            top: 5px            
         }
     }
 
@@ -186,16 +209,8 @@
         background-color: lightgray;
         flex-basis: 33.3%;
 
-        h2, .h2 {
-            background-color: $primary_gray;
-            width: 100%;
-            box-sizing: border-box;
-            margin-top: 0;
-            padding-left: 5px;
-        }
-
         p {
-            padding-left: 15px;
+            padding-left: 20px;
         }
     }
     .change-profile-button {

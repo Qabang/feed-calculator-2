@@ -10,47 +10,17 @@
     <section class="profile-list-wrapper">
         <ul>
             {{#if horses}}
-                {{#each horses as |horse i|}}
-                        <li>
-                            <a href="/profile/{{horse}}">{{horse}}</a>
-                        </li>
-                        <li>
-                            <a href="/profile/{{horse}}">{{horse}}</a>
-                        </li>
-                        <li>
-                            <a href="/profile/{{horse}}">{{horse}}</a>
-                        </li>
-                        <li>
-                            <a href="/profile/{{horse}}">{{horse}}</a>
-                        </li>
-                        <li>
-                            <a href="/profile/{{horse}}">{{horse}}</a>
-                        </li>
-                        <li>
-                            <a href="/profile/{{horse}}">{{horse}}</a>
-                        </li>
-                        <li>
-                            <a href="/profile/{{horse}}">{{horse}}</a>
-                        </li>
-                        <li>
-                            <a href="/profile/{{horse}}">{{horse}}</a>
-                        </li>
-                        <li>
-                            <a href="/profile/{{horse}}">{{horse}}</a>
-                        </li>
-                        <li>
-                            <a href="/profile/{{horse}}">{{horse}}</a>
-                        </li>
-                        <li>
-                            <a href="/profile/{{horse}}">{{horse}}</a>
-                        </li>
-                {{/each}}
+            {{#each horses as |horse i|}}
+            <li>
+                <a href="/profile/{{horse}}">{{horse}}</a>
+            </li>
+            {{/each}}
             {{else}}
-                <li class="no-profile">Tyvärr hittar vi inga profiler till din sökning.</li>
+            <span class="no-profile">Tyvärr hittar vi inga profiler till din sökning.</span>
             {{/if}}
         </ul>
     </section>
 </div>
 
 
-<script type="text/javascript" src="/test.js"></script>
+<script type="text/javascript" src="/scripts/scripts.js"></script>

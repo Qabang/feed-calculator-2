@@ -15,6 +15,10 @@
         display: flex;
         flex-wrap: wrap;
         padding: 0 20px;
+        
+        .no-profile {
+            margin: auto;
+        }
 
         li {
             flex: 1 1 21%;
@@ -51,6 +55,11 @@
                     font-weight: 900;
                 }
             }
+        }
+    }
+    .profile-list-wrapper {
+        ul {
+            justify-content: start;
         }
     }
 

@@ -2,160 +2,160 @@
     <div class="banner calculator-banner">
         <h2>Foderstatskalkylatorn</h2>
     </div>
-        <div class="profile">
-            <form onsubmit="event.preventDefault(); profile_submit();">
-                <div class="profile-basics">
-                    <div class="profile-section">
-                        <label>Namn</label>
-                        <input class="name" type="text" placeholder="Namn..."><br>
-                        <label>Född</label>
-                        <input class="born" type="number" placeholder="YYYY"><br>
-                        <label>Kön</label>
-                        <select id="sex" class="sex" name="kön">
-                            <option value="null">-</option>
-                            <option value="stallion">Hingst</option>
-                            <option value="gelding/mare">Valack/Sto</option>
-                        </select>
-                    </div>
-                    <div class="profile-section">
-                        <label>Vikt</label>
-                        <select id="weight" class="weight" name="vikt">
-                            <option value="null">-</option>
-                        </select><br>
-                        <label>Typ</label>
-                        <select id="type" class="type" name="typ">
-                            <option value="null">-</option>
-                            <option value="type-easy">Lättfödd</option>
-                            <option value="type-normal">Normalfödd</option>
-                            <option value="type-hard">Svårfödd</option>
-                        </select>
-                        <label>Hull</label>
-                        <select class="hull" name="hull">
-                            <option value="null">-</option>
-                            <option value="normal">Normal</option>
-                            <option value="thin">Tunn</option>
-                            <option value="fat">Fet</option>
-                        </select>
-                    </div>
+    <div class="profile">
+        <form onsubmit="event.preventDefault(); profile_submit();">
+            <div class="profile-basics">
+                <div class="profile-section">
+                    <label>Namn</label>
+                    <input class="name" type="text" placeholder="Namn..."><br>
+                    <label>Född</label>
+                    <input class="born" type="number" placeholder="YYYY"><br>
+                    <label>Kön</label>
+                    <select id="sex" class="sex" name="kön">
+                        <option value="null">-</option>
+                        <option value="stallion">Hingst</option>
+                        <option value="gelding/mare">Valack/Sto</option>
+                    </select>
                 </div>
                 <div class="profile-section">
-                    <label>Arbete i minuter per dag:</label>
-                    <div class="profile-work">
-                        <label>Skritt</label><input class="walk" type="" placeholder="Skritt">
-                        <label>Trav / Galopp</label><input class="trot" type="" placeholder="Trav / Galopp">
-                    </div>
+                    <label>Vikt</label>
+                    <select id="weight" class="weight" name="vikt">
+                        <option value="null">-</option>
+                    </select><br>
+                    <label>Typ</label>
+                    <select id="type" class="type" name="typ">
+                        <option value="null">-</option>
+                        <option value="type-easy">Lättfödd</option>
+                        <option value="type-normal">Normalfödd</option>
+                        <option value="type-hard">Svårfödd</option>
+                    </select>
+                    <label>Hull</label>
+                    <select class="hull" name="hull">
+                        <option value="null">-</option>
+                        <option value="normal">Normal</option>
+                        <option value="thin">Tunn</option>
+                        <option value="fat">Fet</option>
+                    </select>
                 </div>
-                <input type="submit" value="Spara">
-        </div>
+            </div>
+            <div class="profile-section">
+                <label>Arbete i minuter per dag:</label>
+                <div class="profile-work">
+                    <label>Skritt</label><input class="walk" type="" placeholder="Skritt">
+                    <label>Trav / Galopp</label><input class="trot" type="" placeholder="Trav / Galopp">
+                </div>
+            </div>
+            <input type="submit" value="Spara">
+    </div>
+    </form>
+    <div class="result-wrapper">
+        <h2 class="profile-name"></h2>
+        <section class="result-labels result">
+            <ul>
+                <li class="result-labels-mj">MJ</li>
+                <li class="result-labels-smrp">G smb rp</li>
+                <li class="result-labels-ca">Ca</li>
+                <li class="result-labels-p">P</li>
+                <li class="result-labels-mg">Mg</li>
+                <li class="result-labels-selen">Selen</li>
+            </ul>
+        </section>
+        <section class="result-need result">
+            <h2>Behov</h2>
+            <ul>
+                <label>Mj</label>
+                <li class="result-need-mj"></li>
+                <label>G smb rp</label>
+                <li class="result-need-smrp"></li>
+                <label>Ca</label>
+                <li class="result-need-ca"></li>
+                <label>P</label>
+                <li class="result-need-p"></li>
+                <label>mg</label>
+                <li class="result-need-mg"></li>
+                <label>Selen</label>
+                <li class="result-need-selen"></li>
+            </ul>
+        </section>
+        <section class="result-work result">
+            <h2>Tillägg för arbete:</h2>
+            <ul>
+                <label>Mj</label>
+                <li class="result-work-mj"></li>
+                <label>G smb rp</label>
+                <li class="result-work-smrp"></li>
+                <label>Ca</label>
+                <li class="result-work-ca"></li>
+                <label>P</label>
+                <li class="result-work-p"></li>
+                <label>mg</label>
+                <li class="result-work-mg"></li>
+                <label>Selen</label>
+                <li class="result-work-selen"></li>
+            </ul>
+        </section>
+        <section class="result-feed result">
+            <h2>Fodrets innehåll:</h2>
+            <ul>
+                <label>Mj</label>
+                <li class="result-feed-mj"></li>
+                <label>G smb rp</label>
+                <li class="result-feed-smrp"></li>
+                <label>Ca</label>
+                <li class="result-feed-ca"></li>
+                <label>P</label>
+                <li class="result-feed-p"></li>
+                <label>mg</label>
+                <li class="result-feed-mg"></li>
+                <label>Selen</label>
+                <li class="result-feed-selen"></li>
+            </ul>
+        </section>
+        <section class="result-total result">
+            <h2>Resultat:</h2>
+            <ul>
+                <label>Mj</label>
+                <li class="result-total-mj"></li>
+                <label>G smb rp</label>
+                <li class="result-total-smrp"></li>
+                <label>Ca</label>
+                <li class="result-total-ca"></li>
+                <label>P</label>
+                <li class="result-total-p"></li>
+                <label>mg</label>
+                <li class="result-total-mg"></li>
+                <label>Selen</label>
+                <li class="result-total-selen"></li>
+            </ul>
+        </section>
+    </div>
+    <div class="feeding-calculator-wrapper">
+        <form class="form-feed" onsubmit="event.preventDefault(); profile_submit();">
+            <div class="feeding-calculator-flex-wrap">
+                <div class="calculator-labels">
+                    <label>Antal kg</label>
+                    <label>TS <span>%</span></label>
+                    <label>MJ / kg</label>
+                    <label>gr smrp / kg</label>
+                    <label>Ca <span>(g)</span></label>
+                    <label>p <span>(g)</span></label>
+                    <label>mg <span>(g)</span></label>
+                    <label>selen <span>(mg)</span></label>
+                </div>
+                <div class="feed-row feed-row-1">
+                    <input step="0.01" class="form-feed-input input-amount" type="number" placeholder="">
+                    <input step="0.01" class="form-feed-input input-solids" type="number" placeholder="">
+                    <input step="0.01" class="form-feed-input input-mj" type="number" placeholder="">
+                    <input step="0.01" class="form-feed-input input-smrp" type="number" placeholder="">
+                    <input step="0.01" class="form-feed-input input-ca" type="number" placeholder="">
+                    <input step="0.01" class="form-feed-input input-p" type="number" placeholder="">
+                    <input step="0.01" class="form-feed-input input-mg" type="number" placeholder="">
+                    <input step="0.01" class="form-feed-input input-selen" type="number" placeholder="">
+                </div>
+            </div>
+            <div class="add-row"><span>Lägg till rad</span>+</div>
+            <input class="form-feed-submit" type="submit" value="Beräkna">
         </form>
-        <div class="result-wrapper">
-            <h2 class="profile-name"></h2>
-            <section class="result-labels result">
-                <ul>
-                    <li class="result-labels-mj">MJ</li>
-                    <li class="result-labels-smrp">G smb rp</li>
-                    <li class="result-labels-ca">Ca</li>
-                    <li class="result-labels-p">P</li>
-                    <li class="result-labels-mg">Mg</li>
-                    <li class="result-labels-selen">Selen</li>
-                </ul>
-            </section>
-            <section class="result-need result">
-                <h2>Behov</h2>
-                <ul>
-                    <label>Mj</label>
-                    <li class="result-need-mj"></li>
-                    <label>G smb rp</label>
-                    <li class="result-need-smrp"></li>
-                    <label>Ca</label>
-                    <li class="result-need-ca"></li>
-                    <label>P</label>
-                    <li class="result-need-p"></li>
-                    <label>mg</label>
-                    <li class="result-need-mg"></li>
-                    <label>Selen</label>
-                    <li class="result-need-selen"></li>
-                </ul>
-            </section>
-            <section class="result-work result">
-                <h2>Tillägg för arbete:</h2>
-                <ul>
-                    <label>Mj</label>
-                    <li class="result-work-mj"></li>
-                    <label>G smb rp</label>
-                    <li class="result-work-smrp"></li>
-                    <label>Ca</label>
-                    <li class="result-work-ca"></li>
-                    <label>P</label>
-                    <li class="result-work-p"></li>
-                    <label>mg</label>
-                    <li class="result-work-mg"></li>
-                    <label>Selen</label>
-                    <li class="result-work-selen"></li>
-                </ul>
-            </section>
-            <section class="result-feed result">
-                <h2>Fodrets innehåll:</h2>
-                <ul>
-                    <label>Mj</label>
-                    <li class="result-feed-mj"></li>
-                    <label>G smb rp</label>
-                    <li class="result-feed-smrp"></li>
-                    <label>Ca</label>
-                    <li class="result-feed-ca"></li>
-                    <label>P</label>
-                    <li class="result-feed-p"></li>
-                    <label>mg</label>
-                    <li class="result-feed-mg"></li>
-                    <label>Selen</label>
-                    <li class="result-feed-selen"></li>
-                </ul>
-            </section>
-            <section class="result-total result">
-                <h2>Resultat:</h2>
-                <ul>
-                    <label>Mj</label>
-                    <li class="result-total-mj"></li>
-                    <label>G smb rp</label>
-                    <li class="result-total-smrp"></li>
-                    <label>Ca</label>
-                    <li class="result-total-ca"></li>
-                    <label>P</label>
-                    <li class="result-total-p"></li>
-                    <label>mg</label>
-                    <li class="result-total-mg"></li>
-                    <label>Selen</label>
-                    <li class="result-total-selen"></li>
-                </ul>
-            </section>
-        </div>
-        <div class="feeding-calculator-wrapper">
-            <form class="form-feed" onsubmit="event.preventDefault(); profile_submit();">
-                <div class="feeding-calculator-flex-wrap">
-                    <div class="calculator-labels">
-                        <label>Antal kg</label>
-                        <label>TS <span>%</span></label>
-                        <label>MJ / kg</label>
-                        <label>gr smrp / kg</label>
-                        <label>Ca <span>(g)</span></label>
-                        <label>p <span>(g)</span></label>
-                        <label>mg <span>(g)</span></label>
-                        <label>selen <span>(mg)</span></label>
-                    </div>
-                    <div class="feed-row feed-row-1">
-                        <input step="0.01" class="form-feed-input input-amount" type="number" placeholder="">
-                        <input step="0.01" class="form-feed-input input-solids" type="number" placeholder="">
-                        <input step="0.01" class="form-feed-input input-mj" type="number" placeholder="">
-                        <input step="0.01" class="form-feed-input input-smrp" type="number" placeholder="">
-                        <input step="0.01" class="form-feed-input input-ca" type="number" placeholder="">
-                        <input step="0.01" class="form-feed-input input-p" type="number" placeholder="">
-                        <input step="0.01" class="form-feed-input input-mg" type="number" placeholder="">
-                        <input step="0.01" class="form-feed-input input-selen" type="number" placeholder="">
-                    </div>
-                </div>
-                <div class="add-row"><span>Lägg till rad</span>+</div>
-                <input class="form-feed-submit" type="submit" value="Beräkna">
-            </form>
-        </div>
+    </div>
 </div>
-<script type="text/javascript" src="/scripts/main.js"></script>
+<script type="text/javascript" src="/scripts/calculator.js"></script>
