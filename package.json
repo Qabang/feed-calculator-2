@@ -4,7 +4,7 @@
   "description": "This is a extended version of my first feed-calculator app. The basics are the same but in this version you are able to save your horses profile and the calculated result.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "npx nodemon index.js"
   },
   "repository": {
     "type": "git",
@@ -25,7 +25,6 @@
   "dependencies": {
     "@babel/core": "^7.10.2",
     "@babel/preset-env": "^7.10.2",
-    "body-parser": "^1.19.0",
     "crypto": "^1.0.1",
     "express": "^4.17.1",
     "express-handlebars": "^4.0.4",

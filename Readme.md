@@ -6,7 +6,10 @@
 ## Installation
 
 Checkout the repository and run npm install in the root folder.
-Run `$node index.js` in root folder.
+import the db-copy and name it feed_calculator.
+
+`$npm run dev` if you have nodemon installed otherwise run `$node index.js` in root folder.
+
 visit the application in [The browser](http://localhost:3000/)
 
 ## Authors
