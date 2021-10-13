@@ -2,9 +2,11 @@
   "name": "feed-calculator",
   "version": "2.0.0",
   "description": "This is a extended version of my first feed-calculator app. The basics are the same but in this version you are able to save your horses profile and the calculated result.",
-  "main": "index.js",
+  "main": "code/index.js",
   "scripts": {
-    "dev": "npx nodemon index.js"
+    "start:watch": "nodemon",
+    "start-dev": "npx nodemon --legacy-watch index.js",
+    "start": "nodemon"
   },
   "repository": {
     "type": "git",
@@ -35,12 +37,17 @@
     "gulp-cli": "^2.2.1",
     "gulp-concat": "^2.6.1",
     "gulp-csso": "^4.0.1",
-    "gulp-less": "^4.0.1",
-    "gulp-pug": "^4.0.1",
-    "gulp-sass": "^4.1.0",
+    "gulp-less": "^5.0.0",
+    "gulp-pug": "^5.0.0",
+    "gulp-sass": "^5.0.0",
     "gulp-uglify": "^3.0.2",
     "mysql2": "^2.1.0",
+    "node-sass": "^6.0.0",
+    "sass": "^1.42.1",
     "sassdoc": "^2.7.2",
     "sequelize": "^5.21.11"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.2"
   }
 }

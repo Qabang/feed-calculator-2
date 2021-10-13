@@ -5,12 +5,32 @@
 
 ## Installation
 
-Checkout the repository and run npm install in the root folder.
-import the db-copy and name it feed_calculator.
+1. `cp .env-example .env` - (update credentials)
+2. `run npm install` in the root folder.
+3. import the db-copy and name it feed_calculator.
 
-`$npm run dev` if you have nodemon installed otherwise run `$node index.js` in root folder.
+4. `docker compose up --build` Project uses docker. run with --build flag to build the container.
 
-visit the application in [The browser](http://localhost:3000/)
+Start:
+`docker compose up`
+
+Stop:
+`docker compose down`
+
+5. visit the application in [The browser](http://localhost:3000/)
+
+### Frontend
+
+Styling is done in SCSS and the project is using gulp for building.
+Open shell in the container (docker extension-> feed-calculator-2 -> attach shell)
+
+`gulp` - runs all tasks.
+
+`gulp watch` - Watches scss and js files for changes
+
+`gulp scss` - for scss changes
+
+`gulp js` - js changes
 
 ## Authors
 
