@@ -24,6 +24,8 @@ Stop:
 Styling is done in SCSS and the project is using gulp for building.
 Open shell in the container (docker extension-> feed-calculator-2 -> attach shell)
 
+`cd code/` - cd to project root folder.
+
 `gulp` - runs all tasks.
 
 `gulp watch` - Watches scss and js files for changes
