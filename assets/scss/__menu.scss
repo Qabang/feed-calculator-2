@@ -1,7 +1,29 @@
 nav {
+    ul {
+        li {
+            list-style-type: none;
+        }
+    }
+
     #main-menu {
+        display: flex;
+        list-style: none;
+        padding: 0;
+        color: $white;
+        margin-top: 135px;
+
+        li {
+            padding: 15px;
+            padding-bottom: 5px;
+            font-size: 20px;
+        }
+
+        .active {
+            color: $aqua!important;
+        }
+
         a {
-            color: $accent-color;
+            color: $light-aqua;
             padding: 10px;
 
             &:hover {
@@ -11,7 +33,7 @@ nav {
             }
 
             &:active {
-                border: 1px solid $accent-color;
+                border: 1px solid $aqua;
             }
         }
         
@@ -19,7 +41,7 @@ nav {
             display: inline-block;
 
             a {
-                color: $accent-color;
+                color: $light-aqua;
             }
             
             .sub-menu {
@@ -30,22 +52,16 @@ nav {
                 height: 0;
                 margin-left: -15px;
                 margin-top: 2px;
+                padding-left: 5px;
 
                 a {
-                    color: $accent-color;
+                    color: $light-aqua;
                 }
             }
             
             &:hover {
-                background-color: lighten($primary-gray, 5%);
-                background-color: $accent-color;
-                color: $black;
-                border: 2px $accent-color solid;
-                border-bottom: 0;
-                padding: 13px 13px 3px;
-
                 a {
-                    color: $black;
+                    color: $yellow;
 
                     &:hover {
                         color: $white;
@@ -56,18 +72,17 @@ nav {
                 .sub-menu {
                     opacity: 1;
                     transition: ease .8s;
-                    background-color: lighten($primary-gray, 5%);
+                    background-color: $dark-blue;
                     border-top: 0;
                     padding-top: 21px;
                     height: auto;
-                    border: 2px solid $accent-color;
                     
                     li {
                         padding: 10px;
                     }
 
                     a {
-                        color: $accent-color;
+                        color: $light-aqua;
                         &:hover {
                             color: $white;
                         }

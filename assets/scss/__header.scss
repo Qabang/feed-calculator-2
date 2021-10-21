@@ -1,43 +1,38 @@
 header {
+    
+    background-image: url('../../images/svg/header.svg');
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+    background-position: center bottom;
+    height: 516px;
     overflow: hidden;
-    font-family: $font;
+    font-family: $font-text;
     text-transform: capitalize;
-    font-variant: small-caps;
-    letter-spacing: 2;
+    line-height: 140%;
     padding-bottom: 0;
+    position: relative;
+    
+    #header-logo {
+        background-image: url(../../images/svg/logo.svg);
+        background-repeat: no-repeat;
+        width: 320px;
+        height: 178px;
+        position: absolute;
+        top: -65px;
+        right: -65px;
+
+        &:hover {
+            cursor: pointer;
+        }
+    }
 
     .header-wrapper {
         margin: auto;
         max-width: $max-width;
-
-        h1 {
-            display: flex;
-            flex-direction: column;
-            font-size: 4rem;
-            color: $accent_color;
-            margin: 0;
-
-            span {
-                font-size: 2rem;
-            }
-        }
+        position: relative;
 
         nav {
             margin-top: 15px;
-
-            ul {
-                display: flex;
-                list-style: none;
-                padding: 0;
-                color: $white;
-
-                li {
-                    padding: 15px;
-                    padding-bottom: 5px;
-                    font-size: 1.6rem;
-                }
-
-            }
 
             li:first-child {
                 padding-left: 0;
